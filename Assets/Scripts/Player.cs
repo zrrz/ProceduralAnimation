@@ -14,7 +14,7 @@ public class Player : MonoBehaviour {
 
 	public bool grounded;
 
-	const float GROUND_CHECK_DISTANCE = 0.5f;
+	const float GROUND_CHECK_DISTANCE = 1.2f; 
 
 	public LayerMask mask;
 
@@ -24,7 +24,7 @@ public class Player : MonoBehaviour {
 
 //	float snowLevel = 0.0f;
 
-//	public float snowAccumSpeed = 0.2f;
+//	public float snowAccumSpeed = 0.2f; 
 
 //	bool moved;
 
@@ -126,7 +126,7 @@ public class Player : MonoBehaviour {
 	}
 
 	bool CheckGrounded() {
-		Debug.DrawLine (centerOfMass.position + (Vector3.up * 0.1f), centerOfMass.position + (Vector3.up * 0.1f) + Vector3.down, Color.red, 1.0f);
+		Debug.DrawLine (centerOfMass.position + (Vector3.up * 0.1f), centerOfMass.position + (Vector3.up * 0.1f) + Vector3.down, Color.red, 1.0f); //FIXME check from feet or sumthin
 //		Debug.DrawRay (centerOfMass.position + (Vector3.up * 0.1f), Vector3.down, Color.red, 1.0f);
 		return Physics.Raycast (centerOfMass.position + (Vector3.up * 0.1f), Vector3.down, GROUND_CHECK_DISTANCE, mask);
 	}
