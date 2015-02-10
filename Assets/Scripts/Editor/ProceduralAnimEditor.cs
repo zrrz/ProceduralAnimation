@@ -31,7 +31,7 @@ public class BodyPartDataEditor : Editor {
 		}
 
 		if (GUILayout.Button("Parse Animations")) {
-			Dictionary<string, BodyPartData.KeyData> keyDataMap = new Dictionary<string, BodyPartData.KeyData>();
+			KeyDataMap keyDataMap = new KeyDataMap();
 
 			keyDataMap.Add("root", new BodyPartData.KeyData());
 
@@ -46,7 +46,7 @@ public class BodyPartDataEditor : Editor {
 			keyDataMap.Add("spine1", new BodyPartData.KeyData());
 			keyDataMap.Add("spine2", new BodyPartData.KeyData());
 			keyDataMap.Add("spine3", new BodyPartData.KeyData());
-			keyDataMap.Add("ribs", new BodyPartData.KeyData());
+//			keyDataMap.Add("ribs", new BodyPartData.KeyData());
 			
 			keyDataMap.Add("lShoulder", new BodyPartData.KeyData());
 			keyDataMap.Add("lUpArm", new BodyPartData.KeyData());

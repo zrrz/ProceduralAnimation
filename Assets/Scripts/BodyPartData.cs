@@ -6,8 +6,9 @@ using System.Collections.Generic;
 public class BodyPartData : ScriptableObject {
 	public List<AnimationClip> animations;
 	[SerializeField]
-	public Dictionary<string, KeyData> keyDataMap;
+	public KeyDataMap keyDataMap;
 
+	[System.Serializable]
 	public class KeyData {
 		public List<Quaternion> rotations;
 		public List<Vector3> positions;

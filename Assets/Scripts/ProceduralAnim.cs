@@ -3,7 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class ProceduralAnim : MonoBehaviour {
-	class BodyPart {
+	[System.Serializable]
+	public class BodyPart {
 		public Transform part;
 		public List<Quaternion> rotations;
 		public List<Vector3> positions;
@@ -17,7 +18,7 @@ public class ProceduralAnim : MonoBehaviour {
 	
 	public BodyPartData bodyPartData; 
 	
-	Dictionary<string, BodyPart> bodyMap; 
+	BodyMap bodyMap; 
 	
 	void Start () {
 		if (bodyPartData == null) {
@@ -40,24 +41,24 @@ public class ProceduralAnim : MonoBehaviour {
 		Transform spine1 = root.GetChild (2);
 		Transform spine2 = spine1.GetChild (0);
 		Transform spine3 = spine2.GetChild (0);
-		Transform ribs = spine3.GetChild (0);
+		//Transform ribs = spine3.GetChild (0);
 
-		Transform lShoulder = ribs.GetChild (0);
+		Transform lShoulder = spine3.GetChild (0);
 		Transform lUpArm = lShoulder.GetChild (0);
 		Transform lForearm = lUpArm.GetChild (0);
 		Transform lHand = lForearm.GetChild (0);
 
-		Transform neck1 = ribs.GetChild (1);
+		Transform neck1 = spine3.GetChild (1);
 		Transform neck2 = neck1.GetChild (0);
 		Transform head = neck2.GetChild (0);
 
-		Transform rShoulder = ribs.GetChild (2);
+		Transform rShoulder = spine3.GetChild (2);
 		Transform rUpArm = rShoulder.GetChild (0);
 		Transform rForearm = rUpArm.GetChild (0);
 		Transform rHand = rForearm.GetChild (0);
 
 
-		bodyMap = new Dictionary<string, BodyPart> ();
+		bodyMap = new BodyMap ();
 
 		bodyMap.Add("root", new BodyPart(root, data.keyDataMap["root"]));
 
@@ -72,7 +73,7 @@ public class ProceduralAnim : MonoBehaviour {
 		bodyMap.Add("spine1", new BodyPart(spine1, data.keyDataMap["spine1"]));
 		bodyMap.Add("spine2", new BodyPart(spine2, data.keyDataMap["spine2"]));
         bodyMap.Add("spine3", new BodyPart(spine3, data.keyDataMap["spine3"]));
-		bodyMap.Add("ribs", new BodyPart(ribs, data.keyDataMap["ribs"]));
+		//bodyMap.Add("ribs", new BodyPart(ribs, data.keyDataMap["ribs"]));
 
 		bodyMap.Add("lShoulder", new BodyPart(lShoulder, data.keyDataMap["lShoulder"]));
 		bodyMap.Add("lUpArm", new BodyPart(lUpArm, data.keyDataMap["lUpArm"]));
@@ -90,7 +91,9 @@ public class ProceduralAnim : MonoBehaviour {
 	}
 	
 	void Update () {
-//		rArm.part.transform.position = Vector3.Lerp (rArm.positions[0], rArm.positions[1], Mathf.Cos (Time.time));
+		foreach (KeyValuePair<string, BodyPart> bodyPart in bodyMap) {
+			bodyPart.Value.part.transform.localRotation = Quaternion.Lerp(bodyPart.Value.rotations[0], bodyPart.Value.rotations[1], Mathf.Cos(Time.time));
+		}
 	}
 
 	public BodyPartData data {
