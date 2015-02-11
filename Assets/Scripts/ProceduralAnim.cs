@@ -9,7 +9,7 @@ public class ProceduralAnim : MonoBehaviour {
 		public List<Quaternion> rotations;
 		public List<Vector3> positions;
 		
-		public BodyPart(Transform p_part, BodyPartData.KeyData keyData) {
+		public BodyPart(Transform p_part, KeyData keyData) {
 			part = p_part;
 			positions = keyData.positions;
 			rotations = keyData.rotations;
@@ -18,7 +18,7 @@ public class ProceduralAnim : MonoBehaviour {
 	
 	public BodyPartData bodyPartData; 
 
-	[SerializeField]
+//	[SerializeField]
 	BodyMap bodyMap; 
 	
 	void Start () {
@@ -27,7 +27,6 @@ public class ProceduralAnim : MonoBehaviour {
 			enabled = false;
 			return;
 		}
-
 
 		Transform root = transform.GetChild (0);
 
@@ -42,7 +41,7 @@ public class ProceduralAnim : MonoBehaviour {
 		Transform spine1 = root.GetChild (2);
 		Transform spine2 = spine1.GetChild (0);
 		Transform spine3 = spine2.GetChild (0);
-		//Transform ribs = spine3.GetChild (0);
+//		Transform ribs = spine3.GetChild (0);
 
 		Transform lShoulder = spine3.GetChild (0);
 		Transform lUpArm = lShoulder.GetChild (0);
@@ -81,6 +80,7 @@ public class ProceduralAnim : MonoBehaviour {
 		SafeBodyMapAdd (spine1, "spine1");
 		SafeBodyMapAdd (spine2, "spine2");
 		SafeBodyMapAdd (spine3, "spine3");
+//		SafeBodyMapAdd (ribs, "ribs");
 //		bodyMap.Add("spine1", new BodyPart(spine1, data.keyDataMap["spine1"]));
 //		bodyMap.Add("spine2", new BodyPart(spine2, data.keyDataMap["spine2"]));
 //        bodyMap.Add("spine3", new BodyPart(spine3, data.keyDataMap["spine3"]));
@@ -113,15 +113,15 @@ public class ProceduralAnim : MonoBehaviour {
 	}
 	
 	void Update () {
-		foreach (KeyValuePair<string, BodyPart> bodyPart in bodyMap) {
+		foreach (KeyValuePair<string, BodyPart> bodyPart in bodyMap.dictionary) {
 			float t = (Mathf.Sin(Time.time) + 1f)/2f;
 
-			if(bodyPart.Value.rotations.Count > 2) {
+			if(bodyPart.Value.rotations.Count >= 2) {
 //				if(bodyPart.Value.rotations[0] != null && bodyPart.Value.rotations[1] != null)
-				print ("rotated");
+//				print ("rotated");
 				bodyPart.Value.part.transform.localRotation = Quaternion.Lerp(bodyPart.Value.rotations[0], bodyPart.Value.rotations[1], t);
 			}
-			if(bodyPart.Value.positions.Count > 2)
+			if(bodyPart.Value.positions.Count >= 2)
 //				if(bodyPart.Value.positions[0] != null && bodyPart.Value.positions[1] != null)
 				bodyPart.Value.part.transform.localPosition = Vector3.Lerp(bodyPart.Value.positions[0], bodyPart.Value.positions[1], t);
 		}
@@ -134,7 +134,7 @@ public class ProceduralAnim : MonoBehaviour {
 	}
 
 	void SafeBodyMapAdd(Transform bodyPart, string key) {
-		if(data.keyDataMap.ContainsKey(key))
+		if(data.keyDataMap.dictionary.ContainsKey(key))
 			bodyMap.Add(key, new BodyPart(bodyPart, data.keyDataMap[key]));
 	}
 }

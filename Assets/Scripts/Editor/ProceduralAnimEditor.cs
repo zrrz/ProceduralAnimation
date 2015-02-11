@@ -8,7 +8,7 @@ public class ProceduralAnimEditor : MonoBehaviour {
 	[MenuItem ("ProceduralAnim/New PartData")]
 	static void CreateAsset() {
 		BodyPartData data = ScriptableObject.CreateInstance<BodyPartData>();
-		string assetPathAndName = AssetDatabase.GenerateUniqueAssetPath("Assets/BodyPartData.asset");
+		string assetPathAndName = AssetDatabase.GenerateUniqueAssetPath("Assets/asset");
 		AssetDatabase.CreateAsset(data, assetPathAndName);
 		
 		AssetDatabase.SaveAssets();
@@ -33,34 +33,34 @@ public class BodyPartDataEditor : Editor {
 		if (GUILayout.Button("Parse Animations")) {
 			KeyDataMap keyDataMap = new KeyDataMap();
 
-			keyDataMap.Add("root", new BodyPartData.KeyData());
+			keyDataMap.Add("root", new KeyData());
 
-			keyDataMap.Add("lUpLeg", new BodyPartData.KeyData());
-			keyDataMap.Add("lLeg", new BodyPartData.KeyData());
-			keyDataMap.Add("lfoot", new BodyPartData.KeyData());
+			keyDataMap.Add("lUpLeg", new KeyData());
+			keyDataMap.Add("lLeg", new KeyData());
+			keyDataMap.Add("lfoot", new KeyData());
 			
-			keyDataMap.Add("rUpLeg", new BodyPartData.KeyData());
-			keyDataMap.Add("rLeg", new BodyPartData.KeyData());
-			keyDataMap.Add("rfoot", new BodyPartData.KeyData());
+			keyDataMap.Add("rUpLeg", new KeyData());
+			keyDataMap.Add("rLeg", new KeyData());
+			keyDataMap.Add("rfoot", new KeyData());
 			
-			keyDataMap.Add("spine1", new BodyPartData.KeyData());
-			keyDataMap.Add("spine2", new BodyPartData.KeyData());
-			keyDataMap.Add("spine3", new BodyPartData.KeyData());
-//			keyDataMap.Add("ribs", new BodyPartData.KeyData());
+			keyDataMap.Add("spine1", new KeyData());
+			keyDataMap.Add("spine2", new KeyData());
+			keyDataMap.Add("spine3", new KeyData());
+//			keyDataMap.Add("ribs", new KeyData());
 			
-			keyDataMap.Add("lShoulder", new BodyPartData.KeyData());
-			keyDataMap.Add("lUpArm", new BodyPartData.KeyData());
-			keyDataMap.Add("lForearm", new BodyPartData.KeyData());
-			keyDataMap.Add("lHand", new BodyPartData.KeyData());
+			keyDataMap.Add("lShoulder", new KeyData());
+			keyDataMap.Add("lUpArm", new KeyData());
+			keyDataMap.Add("lForearm", new KeyData());
+			keyDataMap.Add("lHand", new KeyData());
 			
-			keyDataMap.Add("neck1", new BodyPartData.KeyData());
-			keyDataMap.Add("neck2", new BodyPartData.KeyData());
-			keyDataMap.Add("head", new BodyPartData.KeyData());
+			keyDataMap.Add("neck1", new KeyData());
+			keyDataMap.Add("neck2", new KeyData());
+			keyDataMap.Add("head", new KeyData());
 			
-			keyDataMap.Add("rShoulder", new BodyPartData.KeyData());
-			keyDataMap.Add("rUpArm", new BodyPartData.KeyData());
-			keyDataMap.Add("rForearm", new BodyPartData.KeyData());
-			keyDataMap.Add("rHand", new BodyPartData.KeyData());
+			keyDataMap.Add("rShoulder", new KeyData());
+			keyDataMap.Add("rUpArm", new KeyData());
+			keyDataMap.Add("rForearm", new KeyData());
+			keyDataMap.Add("rHand", new KeyData());
 
 			for (int i = 0; i < data.animations.Count; i++) {
 				AnimationClipCurveData[] curveData = AnimationUtility.GetAllCurves(data.animations [i], true);
