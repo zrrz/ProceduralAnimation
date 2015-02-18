@@ -187,7 +187,9 @@ ModelImporter:
     400180: //RootNode
     7400000: walking_2
     7400002: walking_20
+    7400004: walking_21
     9500000: //RootNode
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -197,7 +199,7 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
@@ -205,10 +207,10 @@ ModelImporter:
     extraExposedTransformPaths: []
     clipAnimations:
     - serializedVersion: 16
-      name: walking_2
+      name: walking_20
       takeName: mixamo.com
-      firstFrame: 9
-      lastFrame: 21
+      firstFrame: 14
+      lastFrame: 14.1000004
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -216,9 +218,9 @@ ModelImporter:
       loop: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -413,10 +415,10 @@ ModelImporter:
       maskType: 0
       maskSource: {instanceID: 0}
     - serializedVersion: 16
-      name: walking_20
+      name: walking_21
       takeName: mixamo.com
-      firstFrame: 15
-      lastFrame: 15.1000004
+      firstFrame: 8
+      lastFrame: 8.10000038
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -424,9 +426,9 @@ ModelImporter:
       loop: 0
       loopTime: 0
       loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
       keepOriginalOrientation: 0
       keepOriginalPositionY: 1
       keepOriginalPositionXZ: 0
@@ -655,6 +657,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: Justin:Hips
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 1
   additionalBone: 0
   userData: 

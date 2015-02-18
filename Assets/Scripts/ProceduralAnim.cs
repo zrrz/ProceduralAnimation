@@ -6,14 +6,22 @@ public class ProceduralAnim : MonoBehaviour {
 	[System.Serializable]
 	public class BodyPart {
 		public Transform part;
-//		public List<Quaternion> rotations;
-		public List<Vector3> rotations;
+		public List<Quaternion> rotations;
+//		public List<Vector3> rotations;
 		public List<Vector3> positions;
 		
 		public BodyPart(Transform p_part, KeyData keyData) {
 			part = p_part;
 			positions = keyData.positions;
 			rotations = keyData.rotations;
+		}
+	}
+
+	class AnimationPhase {
+		public string name;
+		public bool mirror;
+		public AnimationPhase(string p_name, bool p_mirror) {
+			name = p_name; mirror = p_mirror;
 		}
 	}
 	
@@ -49,8 +57,8 @@ public class ProceduralAnim : MonoBehaviour {
 		Transform lHand = lForearm.GetChild (0);
 
 		Transform neck1 = spine3.GetChild (1);
-		Transform neck2 = neck1.GetChild (0);
-		Transform head = neck2.GetChild (0);
+//		Transform neck2 = neck1.GetChild (0);
+		Transform head = neck1.GetChild (0);
 
 		Transform rShoulder = spine3.GetChild (2);
 		Transform rUpArm = rShoulder.GetChild (0);
@@ -80,7 +88,7 @@ public class ProceduralAnim : MonoBehaviour {
 		SafeBodyMapAdd (lHand, "lHand");
 
 		SafeBodyMapAdd (neck1, "neck1");
-		SafeBodyMapAdd (neck2, "neck2");
+//		SafeBodyMapAdd (neck2, "neck2");
 		SafeBodyMapAdd (head, "head");
 
 		SafeBodyMapAdd (rShoulder, "rShoulder");
@@ -92,18 +100,38 @@ public class ProceduralAnim : MonoBehaviour {
 			bodyPart.Value.part.name += bodyPart.Key;
 		}
 	}
+
+	float timer = 0f;
+
+	int curAnim = 0;
+	int nextAnim = 1;
+
+	const int animCount = 4;
+	const float animSpeed = 5f;
 	
 	void Update () {
+		timer += Time.deltaTime * animSpeed;
 		foreach (KeyValuePair<string, BodyPart> bodyPart in bodyMap.dictionary) {
-			float t = (Mathf.Sin(Time.time) + 1f)/2f;
-			print (t);
-
-			if(bodyPart.Value.rotations.Count >= 2) {
-//				bodyPart.Value.part.transform.localRotation = Quaternion.Lerp(bodyPart.Value.rotations[0], bodyPart.Value.rotations[1], t);
-				bodyPart.Value.part.transform.localEulerAngles = Vector3.Lerp(bodyPart.Value.rotations[0], bodyPart.Value.rotations[1], t);
+			if(bodyPart.Value.rotations.Count >= 4) {
+				bodyPart.Value.part.transform.localRotation = Quaternion.Lerp(bodyPart.Value.rotations[curAnim], bodyPart.Value.rotations[nextAnim], timer);
+//				bodyPart.Value.part.transform.localEulerAngles = Vector3.Lerp(bodyPart.Value.rotations[0], bodyPart.Value.rotations[1], t);
 			}
-			if(bodyPart.Value.positions.Count >= 2)
-				bodyPart.Value.part.transform.localPosition = Vector3.Lerp(bodyPart.Value.positions[0], bodyPart.Value.positions[1], t);
+
+//			if(bodyPart.Value.positions.Count >= 2)
+//				bodyPart.Value.part.transform.localPosition = Vector3.Lerp(bodyPart.Value.positions[0], bodyPart.Value.positions[1], t);
+		}
+
+		if(timer > 1f) {
+			timer = 0f;
+			curAnim++;
+			nextAnim++;
+
+			if(curAnim >= animCount) {
+				curAnim = 0;
+			}
+			if(curAnim >= animCount - 1) {
+				nextAnim = 0;
+			}
 		}
 	}
 

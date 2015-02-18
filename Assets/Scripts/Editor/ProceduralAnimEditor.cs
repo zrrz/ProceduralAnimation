@@ -54,7 +54,7 @@ public class BodyPartDataEditor : Editor {
 			keyDataMap.Add("lHand", new KeyData());
 			
 			keyDataMap.Add("neck1", new KeyData());
-			keyDataMap.Add("neck2", new KeyData());
+//			keyDataMap.Add("neck2", new KeyData());
 			keyDataMap.Add("head", new KeyData());
 			
 			keyDataMap.Add("rShoulder", new KeyData());
@@ -65,37 +65,39 @@ public class BodyPartDataEditor : Editor {
 			for (int i = 0; i < data.animations.Count; i++) {
 				AnimationClipCurveData[] curveData = AnimationUtility.GetAllCurves(data.animations [i], true);
 
-				int j = 4;
+				int j = 0;
 				keyDataMap ["root"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));						
-				keyDataMap ["lUpLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				keyDataMap ["lLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				keyDataMap ["lfoot"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				j += 8; // Left toes
-				keyDataMap ["rUpLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				keyDataMap ["rLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				keyDataMap ["rfoot"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				j += 8; // Right toes
 				keyDataMap ["spine1"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["spine2"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["spine3"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				j += 4; // Ribs
+				keyDataMap ["neck1"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				keyDataMap ["head"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["lShoulder"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["lUpArm"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["lForearm"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["lHand"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				j += 20;
 				keyDataMap ["rShoulder"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["rUpArm"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["rForearm"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["rHand"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				keyDataMap ["neck1"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				keyDataMap ["neck2"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				keyDataMap ["head"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				j += 20;
+				keyDataMap ["lUpLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				keyDataMap ["lLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				keyDataMap ["lfoot"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				j += 4; // Left toes
+				keyDataMap ["rUpLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				keyDataMap ["rLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				keyDataMap ["rfoot"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+//				j += 8; // Right toes
+//				j += 4; // Ribs
+//				keyDataMap ["neck2"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 			}
 
-			AnimationClipCurveData[] curveData1 = AnimationUtility.GetAllCurves(data.animations[0], true);
-			for(int i = 0; i < curveData1.Length; i++) {
-				Debug.Log(curveData1[i].path + " " + curveData1[i].propertyName + " " + KeyValue(curveData1[i]));
-			}
+//			AnimationClipCurveData[] curveData1 = AnimationUtility.GetAllCurves(data.animations[0], true);
+//			for(int i = 0; i < curveData1.Length; i++) {
+//				Debug.Log(curveData1[i].path + " " + curveData1[i].propertyName + " " + KeyValue(curveData1[i]));
+//			}
 
 			data.keyDataMap = keyDataMap;
 

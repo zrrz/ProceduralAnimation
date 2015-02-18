@@ -11,17 +11,17 @@ public class BodyPartData : ScriptableObject {
 
 [System.Serializable]
 public class KeyData {
-//	public List<Quaternion> rotations;
-	public List<Vector3> rotations;
+	public List<Quaternion> rotations;
+//	public List<Vector3> rotations;
 	public List<Vector3> positions;
 	public KeyData() {
-//		rotations = new List<Quaternion>();
-		rotations = new List<Vector3>();
+		rotations = new List<Quaternion>();
+//		rotations = new List<Vector3>();
 		positions = new List<Vector3>();
 	}
 	
 	public void AddRotation(Quaternion rot) {
-		rotations.Add (rot.eulerAngles);
+		rotations.Add (rot);
 	}
 	
 	public void AddPosition(Vector3 pos) {
