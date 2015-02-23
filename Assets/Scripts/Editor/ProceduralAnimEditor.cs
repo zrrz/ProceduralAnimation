@@ -37,11 +37,13 @@ public class BodyPartDataEditor : Editor {
 
 			keyDataMap.Add("lUpLeg", new KeyData());
 			keyDataMap.Add("lLeg", new KeyData());
-			keyDataMap.Add("lfoot", new KeyData());
+			keyDataMap.Add("lFoot", new KeyData());
+			keyDataMap.Add("lToe", new KeyData());
 			
 			keyDataMap.Add("rUpLeg", new KeyData());
 			keyDataMap.Add("rLeg", new KeyData());
-			keyDataMap.Add("rfoot", new KeyData());
+			keyDataMap.Add("rFoot", new KeyData());
+			keyDataMap.Add("rToe", new KeyData());
 			
 			keyDataMap.Add("spine1", new KeyData());
 			keyDataMap.Add("spine2", new KeyData());
@@ -84,11 +86,14 @@ public class BodyPartDataEditor : Editor {
 				j += 20;
 				keyDataMap ["lUpLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["lLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				keyDataMap ["lfoot"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				j += 4; // Left toes
+				keyDataMap ["lFoot"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				keyDataMap ["lToe"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+//				j += 4; // Left toes
 				keyDataMap ["rUpLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
 				keyDataMap ["rLeg"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
-				keyDataMap ["rfoot"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				keyDataMap ["rFoot"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+				keyDataMap ["rToe"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));
+
 //				j += 8; // Right toes
 //				j += 4; // Ribs
 //				keyDataMap ["neck2"].AddRotation(new Quaternion(KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++]), KeyValue(curveData [j++])));

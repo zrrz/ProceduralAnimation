@@ -41,11 +41,13 @@ public class ProceduralAnim : MonoBehaviour {
 
 		Transform lUpLeg = root.GetChild (0);
 		Transform lLeg = lUpLeg.GetChild (0);
-		Transform lfoot = lLeg.GetChild (0);
+		Transform lFoot = lLeg.GetChild (0);
+		Transform lToe = lFoot.GetChild (0);
 
 		Transform rUpLeg = root.GetChild (1);
 		Transform rLeg = rUpLeg.GetChild (0);
-		Transform rfoot = rLeg.GetChild (0);
+		Transform rFoot = rLeg.GetChild (0);
+		Transform rToe = rFoot.GetChild (0);
 
 		Transform spine1 = root.GetChild (2);
 		Transform spine2 = spine1.GetChild (0);
@@ -72,11 +74,13 @@ public class ProceduralAnim : MonoBehaviour {
 
 		SafeBodyMapAdd (lUpLeg, "lUpLeg");
 		SafeBodyMapAdd (lLeg, "lLeg");
-		SafeBodyMapAdd (lfoot, "lfoot");
+		SafeBodyMapAdd (lFoot, "lFoot");
+		SafeBodyMapAdd (lToe, "lToe");
 
 		SafeBodyMapAdd (rUpLeg, "rUpLeg");
 		SafeBodyMapAdd (rLeg, "rLeg");
-		SafeBodyMapAdd (rfoot, "rfoot");
+		SafeBodyMapAdd (rFoot, "rFoot");
+		SafeBodyMapAdd (rToe, "rToe");
 
 		SafeBodyMapAdd (spine1, "spine1");
 		SafeBodyMapAdd (spine2, "spine2");
