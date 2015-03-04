@@ -70,10 +70,10 @@ public class Player : MonoBehaviour {
 		//---------------------------------------------------//
 		//---------------------Movement----------------------//
 		float speedMod = input.sprint ? sprintSpeedMod : 1.0f;
-		rigidbody.angularVelocity = Vector3.zero;
+		GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
 
 		if (input.dir.magnitude > 0.0f) {
-			rigidbody.MovePosition(transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime);
+			GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * moveSpeed * speedMod * Time.deltaTime);
 
 			Vector3 lookDir = Vector3.zero;
 			if(Mathf.Abs(input.dir.z) > 0.0f)
@@ -90,7 +90,7 @@ public class Player : MonoBehaviour {
 		if (grounded) {
 			if(input.jump && Time.time > jumpCD) {
 				jumpCD = Time.time + 0.7f; //FIXME later
-				rigidbody.AddForce(Vector3.up * jumpStrength);
+				GetComponent<Rigidbody>().AddForce(Vector3.up * jumpStrength);
 //				bottomAnimator.SetBool("Jump", true);
 //				topAnimator.SetBool("Jump", true);
 			}

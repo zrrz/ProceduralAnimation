@@ -28,8 +28,8 @@ public class CameraFollow : MonoBehaviour {
 		y = angles.x;
 		
 		// Make the rigid body not change rotation
-		if (rigidbody)
-			rigidbody.freezeRotation = true;
+		if (GetComponent<Rigidbody>())
+			GetComponent<Rigidbody>().freezeRotation = true;
 	}
 
 	Vector3 HandleCollisionZoom() {
@@ -60,10 +60,10 @@ public class CameraFollow : MonoBehaviour {
 	Vector3[] GetNearPlaneCorners() {
 		Vector3[] nearClipCorners = new Vector3[4];
 
-		float nearH = 2 * Mathf.Tan (camera.fieldOfView * Mathf.Deg2Rad / 2.0f) * camera.nearClipPlane;
-		float nearW = nearH * camera.aspect;
+		float nearH = 2 * Mathf.Tan (GetComponent<Camera>().fieldOfView * Mathf.Deg2Rad / 2.0f) * GetComponent<Camera>().nearClipPlane;
+		float nearW = nearH * GetComponent<Camera>().aspect;
 
-		Vector3 nearC = transform.position + transform.forward * camera.nearClipPlane;
+		Vector3 nearC = transform.position + transform.forward * GetComponent<Camera>().nearClipPlane;
 
 		nearClipCorners [0] = nearC + (transform.up * (nearH / 2.0f)) - (transform.right * (nearW / 2.0f));
 		nearClipCorners [1] = nearC + (transform.up * (nearH / 2.0f)) + (transform.right * (nearW / 2.0f));
@@ -76,7 +76,7 @@ public class CameraFollow : MonoBehaviour {
 	void LateUpdate () {
 		if (target) {
 			Vector3 lookPos = target.position;
-			Screen.lockCursor = true;
+			Cursor.lockState = CursorLockMode.Locked;
 			x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
 			y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
 
