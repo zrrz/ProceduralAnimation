@@ -1,15 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
-public class ProceduralAnimData : MonoBehaviour {
-
-	public BodyPartData data;
-
-	void Start () {
-	
-	}
-
-	void Update () {
-	
-	}
+[System.Serializable]
+public class ProceduralAnimData : ScriptableObject {
+	public List<BodyPartData> data;
 }

@@ -3,7 +3,12 @@ using System.Collections;
 using System.Collections.Generic;
 
 [System.Serializable]
-public class BodyPartData : ScriptableObject {
+public class BodyPartData {
+	public BodyPartData() {
+		name = "animation";
+		animations = new List<AnimationClip> ();
+	}
+	public string name;
 	public List<AnimationClip> animations;
 	[SerializeField]
 	public KeyDataMap keyDataMap;
